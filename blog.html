@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #add8e6;
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background-color: #e0e0e0;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-author {
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .blog-content {
+      margin-bottom: 2rem;
+    }
+
+    .comments-section {
+      margin-top: 2rem;
+    }
+
+    .comment-box {
+      margin-top: 1rem;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    button {
+      margin-top: 0.8rem;
+      background-color: #6c757d;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5a6268;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+
+    .comment {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    My Blog
+  </header>
+
+  <!-- Blog Content -->
+  <div class="container">
+    <div class="blog-post">
+      <div class="blog-title">Web Technologies</div>
+      <div class="blog-author">Author: ABCDE</div>
+      <div class="blog-content">
+        Welcome to the world of Web Technologies. We design/create beautiful and interactive websites.
+      </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+      <h3>Comments</h3>
+      <div id="comments-list">
+        <!-- Dynamically added comments will appear here -->
+      </div>
+      <div class="comment-box">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Your name">
+        <label for="comment">Comment:</label>
+        <textarea id="comment" placeholder="Your comment"></textarea>
+        <button onclick="submitComment()">Submit Comment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2024 My Blog
+  </footer>
+
+  <script>
+    // JavaScript to handle comment submission and display
+    function submitComment() {
+      // Get name and comment values
+      const name = document.getElementById('name').value.trim();
+      const comment = document.getElementById('comment').value.trim();
+
+      // Check if both fields are filled
+      if (name === "" || comment === "") {
+        alert("Both fields are required!");
+        return;
+      }
+
+      // Create a new comment element
+      const commentContainer = document.createElement('div');
+      commentContainer.className = 'comment';
+
+      const commentContent = `
+        <strong>${name}</strong>
+        <p>${comment}</p>
+      `;
+      commentContainer.innerHTML = commentContent;
+
+      // Add the new comment to the list
+      document.getElementById('comments-list').appendChild(commentContainer);
+
+      // Clear the input fields
+      document.getElementById('name').value = '';
+      document.getElementById('comment').value = '';
+    }
+  </script>
+</body>
+</html>

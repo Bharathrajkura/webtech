@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adaptive Landing Page</title>
+  <style>
+    /* General Reset */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #f28a8a;
+      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .device-message {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .features {
+      display: flex;
+     
+      justify-content: space-between;
+      gap: 1rem;
+     
+    }
+
+    .feature {
+      flex: 1 ;
+      background-color: #fff;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    .contact-form {
+      background-color: #fff;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+        background-color: #f28a8a;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%; /* Ensures button occupies full horizontal space */
+  box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: #e57b7b;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+      .features {
+        flex-direction: column;
+      }
+
+      .feature {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.5rem;
+        padding: 1rem 0;
+      }
+
+      .device-message {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header id="device-type">
+    Welcome to Our Service
+    <div class="device-message">Detecting device...</div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h2>Discover Our Solutions</h2>
+    <p style="text-align:center;">We provide top-notch solutions tailored to your needs.</p>
+
+    <!-- Features Section -->
+    <div class="features">
+      <div class="feature">Feature 1</div>
+      <div class="feature">Feature 2</div>
+      <div class="feature">Feature 3</div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h3>Contact Us</h3>
+      <p>Get in touch with us for more information.</p>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Your Name">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Your Email">
+        <label for="message">Message:</label>
+        <textarea id="message" placeholder="Your Message"></textarea>
+        <button type="button" onclick="submitForm()">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2024 Our Service
+  </footer>
+
+  <!-- JavaScript for Device Detection -->
+  <script>
+    function detectDevice() {
+      const width = window.innerWidth;
+      const deviceMessage = document.querySelector(".device-message");
+      const header = document.getElementById("device-type");
+
+      if (width <= 480) {
+        deviceMessage.textContent = "You are using a smartphone.";
+      } else if (width <= 768) {
+        deviceMessage.textContent = "You are using a tablet.";
+      } else {
+        deviceMessage.textContent = "You are using a desktop.";
+      }
+    }
+
+    function submitForm() {
+      alert("Your message has been submitted. Thank you!");
+    }
+
+    // Detect device on page load and on window resize
+    window.onload = detectDevice;
+    window.onresize = detectDevice;
+  </script>
+</body>
+</html>
